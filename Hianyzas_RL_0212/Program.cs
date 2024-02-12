@@ -6,7 +6,12 @@ for (int i = 1; i < input.Length; i++)
     data[i] = new Hianyzas(input[i]);
 }
 Console.WriteLine($"{input.Length} hianyzas rogzitve");
-
+int mossz = 0;
+for (int i = 0; i < data.Length; i++)
+{
+    mossz += data[i].mora;
+}
+Console.WriteLine($"Az osszes mulasztas: {mossz} óra");
 
 
 
@@ -27,5 +32,9 @@ struct Hianyzas
         unap = int.Parse(splitted[3]);
         mora = int.Parse(splitted[4]);
     }
-
+    public int Atvalto()
+    {
+        int mperc = mora * 45;
+        return mperc;
+    }
 }
