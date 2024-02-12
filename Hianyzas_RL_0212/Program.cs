@@ -1,30 +1,31 @@
-﻿using System.Runtime.CompilerServices;
-
-string[] adat = File.ReadAllLines("szeptember.csv");
-List<Hiany> data = new List<Hiany>();
-
-
-
-
-struct Hiany
+﻿
+string[] input = File.ReadAllLines("szeptember.csv");
+Hianyzas[] data = new Hianyzas[input.Length];
+for (int i = 1; i < input.Length; i++)
 {
-    public string Nev;
-    public string Oszt;
-    public string elso;
-    public string utolso;
-    public int orakszama;
+    data[i] = new Hianyzas(input[i]);
+}
+Console.WriteLine($"{input.Length} hianyzas rogzitve");
 
 
-    public Hiany(string line)
+
+
+struct Hianyzas
+{
+    public string nev;
+    public string osztaly;
+    public int enap;
+    public int unap;
+    public int mora;
+
+    public Hianyzas(string line)
     {
-        //var -> Variable, ha nem tudod milyen típusú adatot kapsz, ő kiértékeli
-        string[] splitted = line.Split(';');
-        this.Nev = splitted[0];
-        this.Oszt = splitted[1];
-        this.elso = splitted[2];
-        this.utolso = splitted[3];
-        this.orakszama = int.Parse(splitted[4]);
-
+        string[] splitted = line.Split(";");
+        nev = splitted[0];
+        osztaly = splitted[1];
+        enap = int.Parse(splitted[2]);
+        unap = int.Parse(splitted[3]);
+        mora = int.Parse(splitted[4]);
     }
 
 }
